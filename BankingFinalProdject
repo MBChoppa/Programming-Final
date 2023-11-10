@@ -5,7 +5,7 @@ Assignment: Final Project
 Date Assigned: 10-16-23
 Due Date: 12-10-23
 Description:
-Beglückwünschung1! You have been hired as the lead programmer for a bank2. Your immediate task
+Beglückwünschung1! You have been hired as the lead programmer for a bank. Your immediate task
 is to create a new system for the bank tellers for their daily tasks. Your system must allow the tellers
 to perform the following tasks. However, in order to perform these tasks, the bank teller must be
 logging into the system first.
@@ -20,6 +20,7 @@ academic staff; and/or
 Communicate a copy of this assignment to a plagiarism checking
 service (which may then retain a copy of this assignment on its
 database for the purpose of future plagiarism checking) */
+
 #include <iostream>
 #include <string>
 #include <fstream>
@@ -29,18 +30,47 @@ int main()
 {
   //to do: read things from accounts.dat and tellers.dat  
 
-  //to do: log in
+  //to do: log in - Hale
 
-  // to do: make a menu. 
-// 1. Add a new account
-// 2.Delete an existing account
-// 3.Update information on an existing account
-// 4.Search account information4
-// 5.Deposit money into an account
-// 6.Withdraw money from an account
-// 7.Check balance on an account
+  //The menu. 
+  char choice;
+    do 
+    {
+        cout << "Welcome to ___ Bank! What would you like to do?" << endl;
+        cout << "1. Add a new account." << endl
+            << "2. Delete an existing account." << endl
+            << "3. Update account information." << endl
+            << "4. Search account information." << endl
+            << "5. Deposit money into an account." << endl
+            << "6. Withdraw money from an account." << endl
+            << "7. Check the balance of an account." << endl
+            << "8. Log out." << endl;
+        cin >> choice;
+
+        switch (choice)
+        {
+        case '1':
+        {
+            cout << "Adding a new account." << endl;
+            break;
+        }
+        default:
+        {
+            cout << "That is not a valid input." << endl;
+            break;
+        }
+        }
+    } while (choice != '8');
+
+// 1. Add a new account - Evan
+// 2.Delete an existing account - Evan
+// 3.Update information on an existing account - Evan
+// 4.Search account information - Hale
+// 5.Deposit money into an account - Hale
+// 6.Withdraw money from an account - Hale
+// 7.Check balance on an account - Hale
   
-  //to do: make log out system. (at all turns)
+  //to do: make log out system. (at all turns) - Hale
   //maybe to do: add verlassen 
 
   return 0;
