@@ -24,13 +24,18 @@ database for the purpose of future plagiarism checking) */
 #include <iostream>
 #include <string>
 #include <fstream>
-#include "filemanip"
 using namespace std;
+
+void filemanip(string tellerinfo[][2], int numTellers, string accountinfo[][5], int numAccounts);
+
+const string TELLERS = "tellers.dat", ACCOUNTS = "accounts.dat";
 
 int main()
 {
-    filemanip(); //Reads from files
-
+    string tellerinfo[5][2], accountinfo[19][5];
+    int numTellers = 5, numAccounts = 19;
+    filemanip(tellerinfo, numTellers, accountinfo, numAccounts);
+    
   //to do: log in - Hale
 
   //The menu. 
@@ -75,4 +80,37 @@ int main()
   //maybe to do: add verlassen 
 
   return 0;
+}
+
+/*
+Written By Hale
+Pre: All the information is on the file 
+Post: All the information is stored in Arrays 
+Purpose: To read all of the information from the files. 
+*/
+void filemanip(string tellerinfo[][2], int numTellers, string accountinfo[][5], int numAccounts)
+{
+    int count = 0;
+    ifstream fin;
+    fin.open(TELLERS);
+    while (fin >> tellerinfo[count][0])
+    {
+        fin >> tellerinfo[count][1];
+        count++;
+    }
+    fin.close();
+    count = 0;
+
+    fin.open(ACCOUNTS);
+    while (fin >> accountinfo[count][0])
+    {
+        string junk;
+        fin >> accountinfo[count][1];
+        getline(fin, junk);
+        getline(fin, accountinfo[count][2]);
+        getline(fin, accountinfo[count][3]);
+        getline(fin, accountinfo[count][4]);
+        cout << accountinfo[count][4] << endl;
+        count++;
+    }
 }
