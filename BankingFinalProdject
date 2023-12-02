@@ -99,6 +99,32 @@ int main()
         }
         case '5':
         {
+            cout << "Please enter the account number: ";
+            string num;
+            int place = -1;
+            cin >> num;
+
+            for (int i = 0; i < 19; i++)
+            {
+                if (accountinfo[i][0] == num)
+                {
+                    place = i;
+                }
+            }
+            if (place == -1)
+            {
+                cout << "That is not an account that exists." << endl;
+                break;
+            }
+            float deposit = 0.00;
+            cout << "How much money would you like to deposit into the account?" << endl;
+            cin >> deposit;
+
+            ofstream fout;
+            fout.open(accountfiles[place]);
+            fout << deposit;
+            cout << "Depositing $" << deposit << " into that account." << endl;
+
             break;
         }
         case '6':
