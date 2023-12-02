@@ -24,34 +24,12 @@ database for the purpose of future plagiarism checking) */
 #include <iostream>
 #include <string>
 #include <fstream>
+#include "filemanip"
 using namespace std;
 
 int main()
 {
-  //reads information from accounts.dat and tellers.dat  
-    const string TELLERS = "tellers.dat", ACCOUNTS = "accounts.dat";
-    string usernames[5], passwords[5];
-    int count = 0;
-    ifstream fin;
-    fin.open(TELLERS);
-    while (fin >> usernames[count])
-    {
-        fin >> passwords[count];
-        count++;
-    }
-    fin.close();
-    count = 0;
-    
-    string accountnum[19], ssn[19], name[19], address[19], phonenum[19], junk;
-    fin.open(ACCOUNTS);
-    while (fin >> accountnum[count])
-    {
-        fin >> ssn[count];
-        getline(fin, junk);
-        getline(fin, name[count]);
-        getline(fin, address[count]);
-        getline(fin, phonenum[count]);
-    }
+    filemanip(); //Reads from files
 
   //to do: log in - Hale
 
