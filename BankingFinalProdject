@@ -111,6 +111,9 @@ int main()
         }
         case '8':
         {
+            cout << "Logging out..." << endl;
+            login(tellerinfo, numTellers);
+
             break;
         }
         default:
