@@ -70,9 +70,29 @@ int main()
         }
         case '4':
         {
-            cout << "Please enter your account number" << endl;
-            int num;
+            cout << "Please enter the account number." << endl;
+            string num;
+            int place = -1;
             cin >> num;
+
+            for (int i = 0; i < 19; i++)
+            {
+                if (accountinfo[i][0] == num)
+                {
+                    place = i;
+                }
+            }
+            if (place == -1)
+            {
+                cout << "That is not an account that exists." << endl;
+                break;
+            }
+            cout << "Here is the information for account number " << accountinfo[place][0] << endl;
+            for (int i = 1; i < 5; i++)
+            {
+                cout << accountinfo[place][i] << endl;
+            }
+
             break;
         }
         case '5':
