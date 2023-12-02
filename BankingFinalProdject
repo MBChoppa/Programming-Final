@@ -60,6 +60,37 @@ int main()
             cout << "Adding a new account." << endl;
             break;
         }
+        case '2':
+        {
+            break;
+        }
+        case '3':
+        {
+            break;
+        }
+        case '4':
+        {
+            cout << "Please enter your account number" << endl;
+            int num;
+            cin >> num;
+            break;
+        }
+        case '5':
+        {
+            break;
+        }
+        case '6':
+        {
+            break;
+        }
+        case '7':
+        {
+            break;
+        }
+        case '8':
+        {
+            break;
+        }
         default:
         {
             cout << "That is not a valid input." << endl;
