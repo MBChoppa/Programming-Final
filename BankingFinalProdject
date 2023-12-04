@@ -60,17 +60,22 @@ int main()
 
         switch (choice)
         {
-        case '1':
+        case '1': //Written by Evan Crabtree
         {
             cout << "Adding a new account." << endl;
+            create_account();
             break;
         }
-        case '2':
+        case '2': //Written by Evan Crabtree
         {
+            cout << "Deleting a new account." << endl;
+            delete_account();
             break;
         }
-        case '3':
+        case '3': //Written by Evan Crabtree
         {
+            cout << "Updating an existing account." << endl;
+            update_account();
             break;
         }
         case '4': //Written by Hale Walls.
