@@ -21,24 +21,27 @@ Communicate a copy of this assignment to a plagiarism checking
 service (which may then retain a copy of this assignment on its
 database for the purpose of future plagiarism checking) */
 
+  //maybe to do: add verlassen 
+
 #include <iostream>
 #include <string>
 #include <fstream>
 using namespace std;
 
-void filemanip(string tellerinfo[][2], int numTellers, string accountinfo[][5], int numAccounts);
-void login(string tellerinfo[][2], int numTellers);
+//defining functions.
+void filemanip(string tellerinfo[][2], int numTellers, string accountinfo[][5], int numAccounts); 
+void login(string tellerinfo[][2], int numTellers); 
 
-const string TELLERS = "tellers.dat", ACCOUNTS = "accounts.dat";
+const string TELLERS = "tellers.dat", ACCOUNTS = "accounts.dat"; //defining file names.
 
 int main()
 {
-    string tellerinfo[5][2], accountinfo[19][5];
-    int numTellers = 5, numAccounts = 19;
+    //defning data variables. 
+    string tellerinfo[10][2], accountinfo[30][5];
+    int numTellers = 10, numAccounts = 30; //larger numbers to make room for new accounts.
+    //calling the functions.
     filemanip(tellerinfo, numTellers, accountinfo, numAccounts);
     login(tellerinfo, numTellers);
-    
-  //to do: log in - Hale
 
   //The menu. 
   char choice;
@@ -70,14 +73,14 @@ int main()
         {
             break;
         }
-        case '4':
+        case '4': //Written by Hale Walls.
         {
-            cout << "Please enter the account number." << endl;
+            cout << "Please enter the account number." << endl; //account number is the name of the file it will be drawn from.
             string num;
-            int place = -1;
+            int place = -1; //set up for checking validitiy. 
             cin >> num;
 
-            for (int i = 0; i < 19; i++)
+            for (int i = 0; i < 19; i++) //checks to see if the inputed number is valid.
             {
                 if (accountinfo[i][0] == num)
                 {
@@ -89,22 +92,22 @@ int main()
                 cout << "That is not an account that exists." << endl;
                 break;
             }
-            cout << "Here is the information for account number " << accountinfo[place][0] << endl;
-            for (int i = 1; i < 5; i++)
+            cout << "Here is the information for account number " << accountinfo[place][0] << endl; //prints the account information.
+            for (int i = 1; i < 5; i++) 
             {
                 cout << accountinfo[place][i] << endl;
             }
 
             break;
         }
-        case '5':
+        case '5': //Written by Hale Walls
         {
             cout << "Please enter the account number: ";
             string num;
-            int place = -1;
+            int place = -1; //set up for checking validitiy. 
             cin >> num;
 
-            for (int i = 0; i < 19; i++)
+            for (int i = 0; i < 19; i++) //checks to see if the inputed number is valid.
             {
                 if (accountinfo[i][0] == num)
                 {
@@ -116,25 +119,33 @@ int main()
                 cout << "That is not an account that exists." << endl;
                 break;
             }
-            float deposit = 0.00;
-            cout << "How much money would you like to deposit into the account?" << endl;
-            cin >> deposit;
+            float deposit = 0.00; //using float because of decimal places.
+            cout << "How much money would you like to deposit into the account?" << endl; 
+            cin >> deposit; //gets amount.
 
-            ofstream fout;
-            fout.open(accountfiles[place]);
-            fout << deposit;
-            cout << "Depositing $" << deposit << " into that account." << endl;
+            if(deposit >= 0) //checks to see if the amount is valid. 
+            {
+                ofstream fout; 
+                fout.open(accountfiles[place]); //opens the file for the account.
+                fout << deposit; //deposits the amount into the file.
+                cout << "Depositing $" << deposit << " into that account." << endl; 
+            }
+            else
+            {
+                cout << "That is not a valid amount." << endl;
+                break;
+            }
 
             break;
         }
-        case '6':
+        case '6': //Written by Hale Walls
         {
             cout << "Please enter the account number: ";
             string num;
-            int place = -1;
+            int place = -1; //set up for checking validitiy. 
             cin >> num;
 
-            for (int i = 0; i < 19; i++)
+            for (int i = 0; i < 19; i++) //checks to see if the inputed number is valid.
             {
                 if (accountinfo[i][0] == num)
                 {
@@ -146,38 +157,38 @@ int main()
                 cout << "That is not an account that exists." << endl;
                 break;
             }
-            float balance, withdraw;
+            float balance, withdraw; //defining variables.
             ifstream fin;
-            fin.open(accountfiles[place]);
-            fin >> balance;
+            fin.open(accountfiles[place]); //opens the account file.
+            fin >> balance; //gets the balance from the account file.
             fin.close();
-            cout << "That account has $" << balance << " in it.  How much would you like to withdraw?" << endl;
-            cin >> withdraw;
-            if (withdraw > balance || withdraw < 0)
+            cout << "That account has $" << balance << " in it.  How much would you like to withdraw?" << endl; //prompts the user for how much they want to withdraw.
+            cin >> withdraw; //get withdraw amount.
+            if (withdraw > balance || withdraw < 0) //checks to see if the amount is valid.
             {
                 cout << "That is not a valid amount." << endl;
                 break;
             }
             else
             {
-                balance -= withdraw;
-                ofstream fout;
-                fout.open(accountfiles[place]);
-                fout << balance;
+                balance -= withdraw; //subtracts the withdraw amount from the existing balance.
+                ofstream fout; 
+                fout.open(accountfiles[place]); //reopens the account file.
+                fout << balance; //writes the new balance.
                 fout.close();
-                cout << "$" << withdraw << " has been withdrawn.  The current balance for this account is $" << balance << "." << endl;
+                cout << "$" << withdraw << " has been withdrawn.  The current balance for this account is $" << balance << "." << endl; //tells user new balance.
             }
 
             break;
         }
-        case '7':
+        case '7': //Written by Hale Walls
         {
-             cout << "Please enter the account number: ";
+            cout << "Please enter the account number: "; 
             string num;
-            int place = -1;
+            int place = -1; //set up for checking validitiy. 
             cin >> num;
 
-            for (int i = 0; i < 19; i++)
+            for (int i = 0; i < 19; i++) //checks to see if the inputed number is valid.
             {
                 if (accountinfo[i][0] == num)
                 {
@@ -191,54 +202,43 @@ int main()
             }
             float balance;
             ifstream fin;
-            fin.open(accountfiles[place]);
-            fin >> balance;
+            fin.open(accountfiles[place]); //opens the account file.
+            fin >> balance; //gets the balance number.
             fin.close();
-            cout << "The balance for that account is $" << balance << "." << endl;
+            cout << "The balance for that account is $" << balance << "." << endl; //prints the balance currently in the account.
 
             break;
         }
-        case '8':
+        case '8': //Written by Hale Walls
         {
-            cout << "Logging out..." << endl;
-            login(tellerinfo, numTellers);
+            cout << "Logging out..." << endl; 
+            login(tellerinfo, numTellers); //sends the user back to the login.
 
             break;
         }
         default:
         {
-            cout << "That is not a valid input." << endl;
+            cout << "That is not a valid input." << endl; //covers all inputs that arent 1-8
             break;
         }
         }
     } while (choice != '8');
 
-// 1. Add a new account - Evan
-// 2.Delete an existing account - Evan
-// 3.Update information on an existing account - Evan
-// 4.Search account information - Hale
-// 5.Deposit money into an account - Hale
-// 6.Withdraw money from an account - Hale
-// 7.Check balance on an account - Hale
-  
-  //to do: make log out system. (at all turns) - Hale
-  //maybe to do: add verlassen 
-
   return 0;
 }
 
 /*
-Written By Hale
-Pre: All the information is on the file 
-Post: All the information is stored in Arrays 
+Written By Hale Walls
+Pre: All the information is on the file. 
+Post: All the information is stored in Arrays. 
 Purpose: To read all of the information from the files. 
 */
 void filemanip(string tellerinfo[][2], int numTellers, string accountinfo[][5], int numAccounts)
 {
     int count = 0;
     ifstream fin;
-    fin.open(TELLERS);
-    while (fin >> tellerinfo[count][0])
+    fin.open(TELLERS); //opens tellers.dat
+    while (fin >> tellerinfo[count][0]) //reads teller information from file.
     {
         fin >> tellerinfo[count][1];
         count++;
@@ -246,8 +246,8 @@ void filemanip(string tellerinfo[][2], int numTellers, string accountinfo[][5], 
     fin.close();
     count = 0;
 
-    fin.open(ACCOUNTS);
-    while (fin >> accountinfo[count][0])
+    fin.open(ACCOUNTS); //opens accounts.date
+    while (fin >> accountinfo[count][0]) //reads account information from file.
     {
         string junk;
         fin >> accountinfo[count][1];
@@ -260,26 +260,32 @@ void filemanip(string tellerinfo[][2], int numTellers, string accountinfo[][5], 
     }
 }
 
+/*
+Written By Hale Walls
+Pre: All the information has been read from the file. 
+Post: The teller has logged in using their username and password. 
+Purpose: To allow tellers to log in using their account info. 
+*/
 void login(string tellerinfo[][2], int numTellers)
 {
-    string username, password, target = "";
+    string username, password, target = ""; //defining variables.
     cout << "Please enter your username: ";
     cin >> username;
-    for (int i = 0; i < numTellers; i++)
+    for (int i = 0; i < numTellers; i++) //searches list of tellers for the input.
     {
         if (username == tellerinfo[i][0])
             target = tellerinfo[i][1];
     }
-    if (target == "")
+    if (target == "") //if input isn't valid, send back to start.
     {
         cout << "That username is not in our database." << endl;
         login(tellerinfo, numTellers);
     }
     else
     {
-        cout << "Please enter your password: ";
+        cout << "Please enter your password: "; //prompts for password.
         cin >> password;
-        if (password == target)
+        if (password == target) //checks for validity.
         {
             return;
         }
