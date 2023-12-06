@@ -13,7 +13,7 @@ void SearchAccount(string accountinfo[][5], int numAccounts)
     int place = -1; //set up for checking validitiy. 
     cin >> num;
 
-    for (int i = 0; i < 19; i++) //checks to see if the inputed number is valid.
+    for (int i = 0; i < numAccounts; i++) //checks to see if the inputed number is valid.
     {
         if (accountinfo[i][0] == num)
         {
