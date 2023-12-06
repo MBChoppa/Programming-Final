@@ -37,10 +37,10 @@ const string TELLERS = "tellers.dat", ACCOUNTS = "accounts.dat"; //defining file
 int main()
 {
     //defning data variables. 
-    string tellerinfo[10][2], accountinfo[30][5];
+    string tellerinfo[10][2], accountinfo[30][5], accountfiles[30];
     int numTellers = 10, numAccounts = 30; //larger numbers to make room for new accounts.
     //calling the functions.
-    filemanip(tellerinfo, numTellers, accountinfo, numAccounts);
+    filemanip(tellerinfo, numTellers, accountinfo, accountfiles, numAccounts);
     login(tellerinfo, numTellers);
 
   //The menu. 
@@ -158,6 +158,7 @@ void filemanip(string tellerinfo[][2], int numTellers, string accountinfo[][5], 
     fin.close();
     count = 0;
 
+    string suffix = ".dat";
     fin.open(ACCOUNTS); //opens accounts.dat
     while (fin >> accountinfo[count][0]) //reads account information from file.
     {
@@ -167,7 +168,13 @@ void filemanip(string tellerinfo[][2], int numTellers, string accountinfo[][5], 
         getline(fin, accountinfo[count][2]);
         getline(fin, accountinfo[count][3]);
         getline(fin, accountinfo[count][4]);
-        cout << accountinfo[count][4] << endl;
+
+        accountfiles[count] = accountinfo[count][0] + suffix;
+        ofstream fout;
+        fout.open(accountfiles[count]);
+        fout << "0.00";
+        fout.close();
+
         count++;
     }
 }
