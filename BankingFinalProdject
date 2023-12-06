@@ -90,45 +90,7 @@ int main()
         }
         case '6': //Written by Hale Walls
         {
-            cout << "Please enter the account number: ";
-            string num;
-            int place = -1; //set up for checking validitiy. 
-            cin >> num;
-
-            for (int i = 0; i < 19; i++) //checks to see if the inputed number is valid.
-            {
-                if (accountinfo[i][0] == num)
-                {
-                    place = i;
-                }
-            }
-            if (place == -1)
-            {
-                cout << "That is not an account that exists." << endl;
-                break;
-            }
-            float balance, withdraw; //defining variables.
-            ifstream fin;
-            fin.open(accountfiles[place]); //opens the account file.
-            fin >> balance; //gets the balance from the account file.
-            fin.close();
-            cout << "That account has $" << balance << " in it.  How much would you like to withdraw?" << endl; //prompts the user for how much they want to withdraw.
-            cin >> withdraw; //get withdraw amount.
-            if (withdraw > balance || withdraw < 0) //checks to see if the amount is valid.
-            {
-                cout << "That is not a valid amount." << endl;
-                break;
-            }
-            else
-            {
-                balance -= withdraw; //subtracts the withdraw amount from the existing balance.
-                ofstream fout; 
-                fout.open(accountfiles[place]); //reopens the account file.
-                fout << balance; //writes the new balance.
-                fout.close();
-                cout << "$" << withdraw << " has been withdrawn.  The current balance for this account is $" << balance << "." << endl; //tells user new balance.
-            }
-
+            WithdrawAccount(accountinfo, accountfiles, numAccounts);
             break;
         }
         case '7': //Written by Hale Walls
@@ -196,7 +158,7 @@ void filemanip(string tellerinfo[][2], int numTellers, string accountinfo[][5], 
     fin.close();
     count = 0;
 
-    fin.open(ACCOUNTS); //opens accounts.date
+    fin.open(ACCOUNTS); //opens accounts.dat
     while (fin >> accountinfo[count][0]) //reads account information from file.
     {
         string junk;
