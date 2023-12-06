@@ -26,8 +26,8 @@ void SearchAccount()
         break;
     }
     cout << "Here is the information for account number " << accountinfo[place][0] << endl; //prints the account information.
-    for (int i = 1; i < 5; i++) 
-    {
-        cout << accountinfo[place][i] << endl;
-    }
+    cout << "Social Security Number: " << accountinfo[place][1] << endl;
+    cout << "Name: " << accountinfo[place][2] << endl;
+    cout << "Address: " << accountinfo[place][3] << endl;
+    cout << "Phone Number: " << accountinfo[place][4] << endl;
 }
