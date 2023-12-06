@@ -4,6 +4,11 @@ Pre: All the information has been read from the file.
 Post: The teller has logged in using their username and password. 
 Purpose: To allow tellers to log in using their account info. 
 */
+#include <iostream>
+#include <string>
+#include <fstream>
+using namespace std;
+
 void login(string tellerinfo[][2], int numTellers)
 {
     string username, password, target = ""; //defining variables.
