@@ -23,7 +23,7 @@ void SearchAccount(string accountinfo[][5], int numAccounts)
     if (place == -1)
     {
         cout << "That is not an account that exists." << endl;
-        break;
+        return;
     }
     cout << "Here is the information for account number " << accountinfo[place][0] << endl; //prints the account information.
     cout << "Social Security Number: " << accountinfo[place][1] << endl;
