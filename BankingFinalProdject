@@ -26,12 +26,15 @@ database for the purpose of future plagiarism checking) */
 #include <iostream>
 #include <string>
 #include <fstream>
+
+#include "Filemanip.h"
+#include "Login.h"
+#include "SearchAccount.h"
+#include "DepositAccount.h"
+#include "WithdrawAccount.h"
+#include "CheckAccountBalance.h"
+
 using namespace std;
-
-//defining functions.
-const string TELLERS = "tellers.dat", ACCOUNTS = "accounts.dat"; //defining file names.
-
-void filemanip(string tellerinfo[][2], int numTellers, string accountinfo[][5], int numAccounts); 
 
 int main()
 {
@@ -94,30 +97,7 @@ int main()
         }
         case '7': //Written by Hale Walls
         {
-            cout << "Please enter the account number: "; 
-            string num;
-            int place = -1; //set up for checking validitiy. 
-            cin >> num;
-
-            for (int i = 0; i < 19; i++) //checks to see if the inputed number is valid.
-            {
-                if (accountinfo[i][0] == num)
-                {
-                    place = i;
-                }
-            }
-            if (place == -1)
-            {
-                cout << "That is not an account that exists." << endl;
-                break;
-            }
-            float balance;
-            ifstream fin;
-            fin.open(accountfiles[place]); //opens the account file.
-            fin >> balance; //gets the balance number.
-            fin.close();
-            cout << "The balance for that account is $" << balance << "." << endl; //prints the balance currently in the account.
-
+            CheckAccountBalance(accountinfo, accountfiles, numAccounts);
             break;
         }
         case '8': //Written by Hale Walls
@@ -136,44 +116,4 @@ int main()
     } while (choice != '8');
 
   return 0;
-}
-
-/*
-Written By Hale Walls
-Pre: All the information is on the file. 
-Post: All the information is stored in Arrays. 
-Purpose: To read all of the information from the files. 
-*/
-void filemanip(string tellerinfo[][2], int numTellers, string accountinfo[][5], int numAccounts)
-{
-    int count = 0;
-    ifstream fin;
-    fin.open(TELLERS); //opens tellers.dat
-    while (fin >> tellerinfo[count][0]) //reads teller information from file.
-    {
-        fin >> tellerinfo[count][1];
-        count++;
-    }
-    fin.close();
-    count = 0;
-
-    string suffix = ".dat";
-    fin.open(ACCOUNTS); //opens accounts.dat
-    while (fin >> accountinfo[count][0]) //reads account information from file.
-    {
-        string junk;
-        fin >> accountinfo[count][1];
-        getline(fin, junk);
-        getline(fin, accountinfo[count][2]);
-        getline(fin, accountinfo[count][3]);
-        getline(fin, accountinfo[count][4]);
-
-        accountfiles[count] = accountinfo[count][0] + suffix;
-        ofstream fout;
-        fout.open(accountfiles[count]);
-        fout << "0.00";
-        fout.close();
-
-        count++;
-    }
 }
