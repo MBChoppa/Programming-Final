@@ -80,7 +80,7 @@ int main()
         }
         case '4': //Written by Hale Walls.
         {
-            SearchAccount(accountinfo[][5], numAccounts);
+            SearchAccount(accountinfo, numAccounts);
             break;
         }
         case '5': //Written by Hale Walls
