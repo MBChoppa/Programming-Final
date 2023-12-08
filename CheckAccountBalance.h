@@ -2,9 +2,13 @@
 // Created by Hale Walls on 12/5/23
 //
 
-#ifndef FINAL_CHECK_ACCOUNT_BALANCE_H
-#define FINAL_CHECK_ACCOUNT_BALANCE_H
+#include <iostream>
+#include <string>
+#include <fstream>
 
-void CheckAccountBalance(string accountinfo[][5], accountfiles[], int numAccounts);
+#ifndef FINAL_CHECKACCOUNTBALANCE_H
+#define FINAL_CHECKACCOUNTBALANCE_H
 
-#endif //FINAL_CHECK_ACCOUNT_BALANCE_H
+void CheckAccountBalance(std::string accountinfo[][5], std::string accountfiles[], int numAccounts);
+
+#endif //FINAL_CHECKACCOUNTBALANCE_H
