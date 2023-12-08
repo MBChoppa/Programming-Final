@@ -1,6 +1,9 @@
-//
-// Create by Hale Walls on 12/5/23
-//
+/*
+Writeen by Hale Walls on 12/5/23
+Pre: the account balance is not being displayed.
+Post: the account balance has been displayed. 
+Purpose: To display the information of account balance to the teller.
+*/
 #include <iostream>
 #include <string>
 #include <fstream>
