@@ -9,11 +9,11 @@ Purpose: Allows tellers to take money out of their account.
 #include <fstream>
 using namespace std;
 
-void WithdrawAccount(string accountinfo[][5], accountfiles[], int numAccounts)
+void WithdrawAccount(string accountinfo[][5], string accountfiles[], int numAccounts)
 {
     cout << "Please enter the account number: ";
     string num;
-    int place = -1; //set up for checking validitiy. 
+    int place = -1; //set up for checking validitiy.
     cin >> num;
 
     for (int i = 0; i < numAccounts; i++) //checks to see if the inputed number is valid.
@@ -43,7 +43,7 @@ void WithdrawAccount(string accountinfo[][5], accountfiles[], int numAccounts)
     else
     {
         balance -= withdraw; //subtracts the withdraw amount from the existing balance.
-        ofstream fout; 
+        ofstream fout;
         fout.open(accountfiles[place]); //reopens the account file.
         fout << balance; //writes the new balance.
         fout.close();
