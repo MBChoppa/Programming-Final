@@ -1,6 +1,9 @@
-//
-// Created by Hale Walls on 12/5/23
-//
+/*
+Writeen by Hale Walls on 12/5/23
+Pre: account information is not displayed.
+Post: account information is displayed. 
+Purpose: Displays the account information from the file after recieving the account number.
+*/
 #include <iostream>
 #include <string>
 #include <fstream>
