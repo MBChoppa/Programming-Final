@@ -13,7 +13,7 @@ void SearchAccount(string accountinfo[][5], int numAccounts)
 {
     cout << "Please enter the account number." << endl; //account number is the name of the file it will be drawn from.
     string num;
-    int place = -1; //set up for checking validitiy. 
+    int place = -1; //set up for checking validitiy.
     cin >> num;
 
     for (int i = 0; i < numAccounts; i++) //checks to see if the inputed number is valid.
