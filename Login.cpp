@@ -1,8 +1,8 @@
 /*
 Written By Hale Walls on 12/5/23
-Pre: All the information has been read from the file. 
-Post: The teller has logged in using their username and password. 
-Purpose: To allow tellers to log in using their account info. 
+Pre: All the information has been read from the file.
+Post: The teller has logged in using their username and password.
+Purpose: To allow tellers to log in using their account info.
 */
 #include <iostream>
 #include <string>
