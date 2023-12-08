@@ -10,11 +10,11 @@ Purpose: Allows the teller to put a certain amount of money into the account.
 
 using namespace std;
 
-void DepositAccount(string accountinfo[][5], int numAccounts)
+void DepositAccount(string accountinfo[][5], string accountfiles[], int numAccounts)
 {
     cout << "Please enter the account number: ";
     string num;
-    int place = -1; //set up for checking validitiy. 
+    int place = -1; //set up for checking validitiy.
     cin >> num;
 
     for (int i = 0; i < numAccounts; i++) //checks to see if the inputed number is valid.
@@ -30,20 +30,21 @@ void DepositAccount(string accountinfo[][5], int numAccounts)
         return;
     }
     float deposit = 0.00; //using float because of decimal places.
-    cout << "How much money would you like to deposit into the account?" << endl; 
+    cout << "How much money would you like to deposit into the account?" << endl;
     cin >> deposit; //gets amount.
 
-    if(deposit >= 0) //checks to see if the amount is valid. 
+    if(deposit >= 0) //checks to see if the amount is valid.
     {
-        ofstream fout; 
+        ofstream fout;
         fout.open(accountfiles[place]); //opens the file for the account.
         fout << deposit; //deposits the amount into the file.
         fout.close();
-        cout << "Depositing $" << deposit << " into that account." << endl; 
+        cout << "Depositing $" << deposit << " into that account." << endl;
     }
     else
     {
         cout << "That is not a valid amount." << endl;
         return;
     }
+}
 }
