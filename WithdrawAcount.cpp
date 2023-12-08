@@ -1,6 +1,9 @@
-//
-// Created by Hale Walls on 12/5/23
-//
+/*
+Writeen by Hale Walls on 12/5/23
+Pre: There is an ammount in the account number file. 
+Post: The amount in the account is changed based on (previous amount - amount teller is taking out). 
+Purpose: Allows tellers to take money out of their account.
+*/
 #include <iostream>
 #include <string>
 #include <fstream>
