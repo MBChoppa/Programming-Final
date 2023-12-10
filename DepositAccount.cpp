@@ -36,22 +36,22 @@ void DepositAccount(string accountinfo[][5], string accountfiles[], int numAccou
     if(deposit >= 0) //checks to see if the amount is valid.
     {
         ifstream fin;
-        fin.open(accountfiles[place]);
-        fin >> balance; //gets the balance from the file. 
+        fin.open("data/"+num+".dat");
+        fin >> balance; //gets balance from file.
         fin.close();
-        balance += deposit; //adds the new value to the file.
-        
+        balance += deposit; //adds new amount to the balance in the file.
+
         ofstream fout;
-        fout.open(accountfiles[place]); //opens the file for the account.
-        fout << balance; //deposits the amount into the file.
+        fout.open("data/"+num+".dat"); //opens the file for the account.
+        fout << fixed << setprecision(2) << balance; //deposits the amount into the file.
         fout.close();
-        cout << "Depositing $" << deposit << " into that account." << endl;
-        cout << "The current balance in the account is" << balance << endl;
-        ifstream fin;
-        fin.open(accountfiles[place]);
+        cout << "Depositing $" << fixed << setprecision(2) <<deposit << " into that account." << endl;
+        cout << "The current balance in the account is " << balance << endl;
+        // ifstream fin;
+        fin.open("data/"+num+".dat"); //opens the file for the account.
         fin >> balance;
         fin.close();
-        cout << "Balance: " << balance << endl;
+        cout << "Balance: " << fixed << setprecision(2) << balance << endl;
     }
     else
     {
