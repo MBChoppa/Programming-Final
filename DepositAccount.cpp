@@ -29,15 +29,21 @@ void DepositAccount(string accountinfo[][5], string accountfiles[], int numAccou
         cout << "That is not an account that exists." << endl;
         return;
     }
-    float deposit = 0.00; //using float because of decimal places.
+    float deposit = 0.00, balance; //using float because of decimal places.
     cout << "How much money would you like to deposit into the account?" << endl;
     cin >> deposit; //gets amount.
 
     if(deposit >= 0) //checks to see if the amount is valid.
     {
+        ifstream fin;
+        fin.open(accountfiles[place]);
+        fin >> balance;
+        fin.close();
+        balance += deposit; 
+        
         ofstream fout;
         fout.open(accountfiles[place]); //opens the file for the account.
-        fout << deposit; //deposits the amount into the file.
+        fout << balance; //deposits the amount into the file.
         fout.close();
         cout << "Depositing $" << deposit << " into that account." << endl;
     }
