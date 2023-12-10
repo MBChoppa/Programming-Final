@@ -37,15 +37,21 @@ void DepositAccount(string accountinfo[][5], string accountfiles[], int numAccou
     {
         ifstream fin;
         fin.open(accountfiles[place]);
-        fin >> balance;
+        fin >> balance; //gets the balance from the file. 
         fin.close();
-        balance += deposit; 
+        balance += deposit; //adds the new value to the file.
         
         ofstream fout;
         fout.open(accountfiles[place]); //opens the file for the account.
         fout << balance; //deposits the amount into the file.
         fout.close();
         cout << "Depositing $" << deposit << " into that account." << endl;
+        cout << "The current balance in the account is" << balance << endl;
+        ifstream fin;
+        fin.open(accountfiles[place]);
+        fin >> balance;
+        fin.close();
+        cout << "Balance: " << balance << endl;
     }
     else
     {
