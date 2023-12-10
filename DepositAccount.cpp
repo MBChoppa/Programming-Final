@@ -1,5 +1,5 @@
 /*
-Writeen by Hale Walls on 12/5/23
+Written by Hale Walls on 12/5/23
 Pre: there is an amount of money in the account.
 Post: there is a larger amount of money in the account based on the previous balance + the balance the teller is depositing. 
 Purpose: Allows the teller to put a certain amount of money into the account.
