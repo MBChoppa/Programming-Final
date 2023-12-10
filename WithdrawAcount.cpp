@@ -30,11 +30,11 @@ void WithdrawAccount(string accountinfo[][5], string accountfiles[], int numAcco
     }
     float balance, withdraw; //defining variables.
     ifstream fin;
-    fin.open(accountfiles[place]); //opens the account file.
+    fin.open("data/"+num+".dat"); //opens the account file.
     fin >> balance; //gets the balance from the account file.
     fin.close();
-    cout << "That account has $" << balance << " in it.  How much would you like to withdraw?" << endl; //prompts the user for how much they want to withdraw.
-    cin >> withdraw; //get withdraw amount.
+    cout << "That account has $" << fixed << setprecision(2) << balance << " in it.  How much would you like to withdraw?" << endl; //prompts the user for how much they want to withdraw.
+    cin >> fixed >> setprecision(2) >> withdraw; //get withdraw amount.
     if (withdraw > balance || withdraw < 0) //checks to see if the amount is valid.
     {
         cout << "That is not a valid amount." << endl;
@@ -42,11 +42,11 @@ void WithdrawAccount(string accountinfo[][5], string accountfiles[], int numAcco
     }
     else
     {
-        balance -= withdraw; //subtracts the withdraw amount from the existing balance.
+        balance = balance - withdraw; //subtracts the withdraw amount from the existing balance.
         ofstream fout;
-        fout.open(accountfiles[place]); //reopens the account file.
-        fout << balance; //writes the new balance.
+        fout.open("data/"+num+".dat"); //reopens the account file.
+        fout << fixed << setprecision(2)<<balance; //writes the new balance.
         fout.close();
-        cout << "$" << withdraw << " has been withdrawn.  The current balance for this account is $" << balance << "." << endl; //tells user new balance.
+        cout << "$" << fixed << setprecision(2) << withdraw << " has been withdrawn.  The current balance for this account is $" << balance << "." << endl; //tells user new balance.
     }
 }
