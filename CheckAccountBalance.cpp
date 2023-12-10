@@ -30,9 +30,9 @@ void CheckAccountBalance(string accountinfo[][5], string accountfiles[], int num
     }
     float balance;
     ifstream fin;
-    fin.open(accountfiles[place]); //opens the account file.
+    fin.open("data/"+num+".dat"); //opens the account file.
     fin >> balance; //gets the balance number.
     fin.close();
-    cout << "The balance for that account is $" << balance << "." << endl; //prints the balance currently in the account.
+    cout << "The balance for that account is $" << fixed << setprecision(2) << balance << "." << endl; //prints the balance currently in the account.
 
 }
